@@ -11,19 +11,26 @@ class BottomBar extends StatelessWidget {
         labelColor: Colors.white60,
         indicatorColor: Colors.transparent,
         tabs: [
-          Tab(
-            icon: Icon(
-              Icons.home,
-              size: 18,
-            ),
-            child: Text(
-              '홈',
-              style: TextStyle(
-                fontSize: 9,
-              ),
-            ),
-          )
+          getBottomTab(Icons.home, '홈'),
+          getBottomTab(Icons.search, '검색'),
+          getBottomTab(Icons.save_alt, '저장한 컨텐츠 목록'),
+          getBottomTab(Icons.list, '더보기'),
         ],
+      ),
+    );
+  }
+
+  Tab getBottomTab(IconData icon, String title) {
+    return Tab(
+      icon: Icon(
+        icon,
+        size: 18,
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 9,
+        ),
       ),
     );
   }
