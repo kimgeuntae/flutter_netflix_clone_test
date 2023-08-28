@@ -14,6 +14,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // TabController tabController = TabController();
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
@@ -33,10 +35,26 @@ class _MyAppState extends State<MyApp> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Container(),
-              Container(),
-              Container(),
-              Container(),
+              Container(
+                child: Center(
+                  child: Text('home'),
+                ),
+              ),
+              Container(
+                child: Center(
+                  child: Text('search'),
+                ),
+              ),
+              Container(
+                child: Center(
+                  child: Text('save'),
+                ),
+              ),
+              Container(
+                child: Center(
+                  child: Text('more'),
+                ),
+              ),
             ],
           ),
           bottomNavigationBar: BottomBar(),
