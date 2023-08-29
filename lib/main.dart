@@ -18,16 +18,13 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData();
-
     return MaterialApp(
       title: 'Netflix',
-      theme: theme.copyWith(
+      theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.black,
-        colorScheme: theme.colorScheme.copyWith(
-          secondary: Colors.white,
-        ),
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: Colors.white, brightness: Brightness.dark),
       ),
       home: DefaultTabController(
         length: 4,
