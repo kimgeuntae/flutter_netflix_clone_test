@@ -10,9 +10,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    return _TopBar();
+  }
+}
+
+class _TopBar extends StatelessWidget {
+  const _TopBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text('Home'),
+      padding: EdgeInsets.fromLTRB(20, 7, 20, 7),
+      child: Row(
+        children: [
+          Image.asset(
+            'images/bbongflix_logo.png',
+            fit: BoxFit.contain,
+            height: 25,
+          ),
+        ],
       ),
     );
   }
