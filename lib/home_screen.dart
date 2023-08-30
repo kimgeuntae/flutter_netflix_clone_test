@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'model/movie.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -8,6 +10,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Movie> movies = [
+    Movie.fromMap({
+      'title': '사랑의 불시착',
+      'keyword': '사랑/로맨스/판타지',
+      'poster': 'test_movie_1.png',
+      'like': false,
+    })
+  ];
+
   @override
   Widget build(BuildContext context) {
     return _TopBar();
@@ -37,7 +48,8 @@ class _TopBar extends StatelessWidget {
     );
   }
 
-  Container getTobBarContent(String title) => Container(
+  Container getTobBarContent(String title) =>
+      Container(
         padding: EdgeInsets.only(right: 1),
         child: Text(title, style: TextStyle(fontSize: 14)),
       );
