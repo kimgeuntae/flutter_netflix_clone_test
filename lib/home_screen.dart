@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_clone_test/widget/carousel_movie_slider.dart';
 
 import 'model/movie.dart';
 
@@ -21,7 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return _TopBar();
+    return ListView(
+      children: [
+        Stack(
+          children: [
+            // 적용 순서대로 아래로 깔림.
+            CarouselMovieSlider(movies: movies),
+            _TopBar(),
+          ],
+        ),
+      ],
+    );
   }
 }
 
@@ -48,8 +59,7 @@ class _TopBar extends StatelessWidget {
     );
   }
 
-  Container getTobBarContent(String title) =>
-      Container(
+  Container getTobBarContent(String title) => Container(
         padding: EdgeInsets.only(right: 1),
         child: Text(title, style: TextStyle(fontSize: 14)),
       );
