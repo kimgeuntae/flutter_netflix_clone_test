@@ -31,6 +31,12 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
     _currentKeyword = keywords[0];
   }
 
+  void likeButtonPressed() {
+    setState(() {
+      likes[_currentPage] = !likes[_currentPage];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,24 +80,9 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // 내가 찜한 콘텐츠
-                Container(
-                  child: Column(
-                    children: [
-                      likes[_currentPage]
-                          ? IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.check),
-                            )
-                          : IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.add),
-                            ),
-                      Text(
-                        '내가 찜한 콘텐츠',
-                        style: TextStyle(fontSize: 11),
-                      ),
-                    ],
-                  ),
+                _LikesContents(
+                  like: likes[_currentPage],
+                  onPressed: likeButtonPressed,
                 ),
                 // 재생 버튼
                 Container(
@@ -141,6 +132,34 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
           )
         ],
       ),
+    );
+  }
+}
+
+class _LikesContents extends StatelessWidget {
+  bool like;
+  final VoidCallback onPressed;
+
+  _LikesContents({required this.like, required this.onPressed, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        like
+            ? IconButton(
+                onPressed: onPressed,
+                icon: Icon(Icons.check),
+              )
+            : IconButton(
+                onPressed: onPressed,
+                icon: Icon(Icons.add),
+              ),
+        Text(
+          '내가 찜한 콘텐츠',
+          style: TextStyle(fontSize: 11),
+        ),
+      ],
     );
   }
 }
