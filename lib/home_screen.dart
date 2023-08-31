@@ -17,6 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
       'keyword': '사랑/로맨스/판타지',
       'poster': 'test_movie_1.png',
       'like': false,
+    }),
+    Movie.fromMap({
+      'title': '꽃다발 같은 사랑을 했다',
+      'keyword': '사랑/로맨스',
+      'poster': 'test_movie_2.png',
+      'like': true,
     })
   ];
 
