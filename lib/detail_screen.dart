@@ -132,6 +132,35 @@ class _DetailScreenState extends State<DetailScreen> {
         child: ListView(
           children: [
             makeTopPanel(),
+            Container(
+              color: Colors.black26,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Column(
+                        children: [
+                          like ? Icon(Icons.check) : Icon(Icons.add),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                          ),
+                          Text(
+                            '내가 찜한 콘텐츠',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.white60,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
