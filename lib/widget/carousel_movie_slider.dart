@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_clone_test/detail_screen.dart';
 
 import '../model/movie.dart';
 
@@ -36,6 +37,12 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
       likes[_currentPage] = !likes[_currentPage];
     });
   }
+
+  void infoButtonPressed() => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => DetailScreen(movie: movies[_currentPage]),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +88,14 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // 내가 찜한 콘텐츠
-                _LikesContents(
+                _LikeButton(
                   like: likes[_currentPage],
                   onPressed: likeButtonPressed,
                 ),
                 // 재생 버튼
                 _PlayButton(),
                 // 정보
-                _Info(),
+                _InfoButton(onPressed: infoButtonPressed),
               ],
             ),
           ),
@@ -99,11 +106,11 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
   }
 }
 
-class _LikesContents extends StatelessWidget {
+class _LikeButton extends StatelessWidget {
   bool like;
   final VoidCallback onPressed;
 
-  _LikesContents({required this.like, required this.onPressed, super.key});
+  _LikeButton({required this.like, required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -159,8 +166,13 @@ class _PlayButton extends StatelessWidget {
   }
 }
 
-class _Info extends StatelessWidget {
-  const _Info({super.key});
+class _InfoButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _InfoButton({
+    required this.onPressed,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +181,7 @@ class _Info extends StatelessWidget {
       child: Column(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: onPressed,
             icon: Icon(Icons.info),
           ),
           Text(
