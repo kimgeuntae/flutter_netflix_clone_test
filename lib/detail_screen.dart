@@ -69,6 +69,17 @@ class _DetailScreenState extends State<DetailScreen> {
                                 style: TextStyle(fontSize: 13),
                               ),
                             ),
+                            Container(
+                              padding: EdgeInsets.all(7),
+                              child: Text(
+                                widget.movie.title,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
