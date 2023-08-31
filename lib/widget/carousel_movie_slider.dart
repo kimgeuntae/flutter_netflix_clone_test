@@ -194,7 +194,7 @@ class _PostIndexIndicator extends StatelessWidget {
     super.key,
   });
 
-  List<Widget> getPosterIndicator(List list, int pageIndex) {
+  List<Widget> makePosterIndicator(List list, int pageIndex) {
     List<Widget> results = [];
 
     for (int i = 0; i < list.length; i++) {
@@ -218,7 +218,7 @@ class _PostIndexIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: getPosterIndicator(likes, currentPageindex),
+      children: makePosterIndicator(likes, currentPageindex),
     );
   }
 }
