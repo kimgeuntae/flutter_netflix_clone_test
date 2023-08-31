@@ -135,6 +135,10 @@ class _DetailScreenState extends State<DetailScreen> {
     // 평가 페이지로 이동
   }
 
+  void onTapSend() {
+    // 공유 페이지로 이동
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,6 +152,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 onTapLike: onTapLike,
               ),
               thumbUpButton: _ThumbUpButton(onTapThumbUp: onTapThumbUp),
+              sendButton: _SendButton(onTapSend: onTapSend),
             ),
           ],
         ),
@@ -159,10 +164,12 @@ class _DetailScreenState extends State<DetailScreen> {
 class _MiddlePanel extends StatelessWidget {
   final Widget likeButton;
   final Widget thumbUpButton;
+  final Widget sendButton;
 
   const _MiddlePanel({
     required this.likeButton,
     required this.thumbUpButton,
+    required this.sendButton,
   });
 
   @override
@@ -174,6 +181,7 @@ class _MiddlePanel extends StatelessWidget {
         children: [
           likeButton,
           thumbUpButton,
+          sendButton,
         ],
       ),
     );
@@ -242,6 +250,40 @@ class _ThumbUpButton extends StatelessWidget {
                 color: Colors.white60,
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SendButton extends StatelessWidget {
+  final VoidCallback onTapSend;
+
+  const _SendButton({
+    required this.onTapSend,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: InkWell(
+        onTap: onTapSend,
+        child: Column(
+          children: [
+            Icon(Icons.send),
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Text(
+              '공유',
+              style: TextStyle(
+                fontSize: 11,
+                color: Colors.white60,
+              ),
+            )
           ],
         ),
       ),
