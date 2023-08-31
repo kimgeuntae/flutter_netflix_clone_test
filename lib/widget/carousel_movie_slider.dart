@@ -90,11 +90,39 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
                 _Info(),
               ],
             ),
-          )
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: getPosterIndicator(likes, _currentPage),
+            ),
+          ),
         ],
       ),
     );
   }
+}
+
+List<Widget> getPosterIndicator(List list, int pageIndex) {
+  List<Widget> results = [];
+
+  for (int i = 0; i < list.length; i++) {
+    results.add(
+      Container(
+        width: 8,
+        height: 8,
+        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: pageIndex == i
+              ? Color.fromRGBO(255, 255, 255, 0.9)
+              : Color.fromRGBO(255, 255, 255, 0.4),
+        ),
+      ),
+    );
+  }
+
+  return results;
 }
 
 class _LikesContents extends StatelessWidget {
