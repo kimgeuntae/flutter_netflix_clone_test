@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_netflix_clone_test/detail_screen.dart';
 
 import '../model/movie.dart';
+import '../screen/detail_screen.dart';
 
 class CarouselMovieSlider extends StatefulWidget {
   final List<Movie> movies;

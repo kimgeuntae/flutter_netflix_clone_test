@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'model/movie.dart';
+import '../model/movie.dart';
 
 class DetailScreen extends StatefulWidget {
   final Movie movie;
@@ -125,6 +125,12 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
+  void onTapLike() {
+    setState(() {
+      like = !like;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,33 +138,66 @@ class _DetailScreenState extends State<DetailScreen> {
         child: ListView(
           children: [
             makeTopPanel(),
-            Container(
-              color: Colors.black26,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Column(
-                        children: [
-                          like ? Icon(Icons.check) : Icon(Icons.add),
-                          Padding(
-                            padding: EdgeInsets.all(5),
-                          ),
-                          Text(
-                            '내가 찜한 콘텐츠',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: Colors.white60,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
+            _MiddlePanel(
+              likeContent: _LikeContent(
+                like: like,
+                onTapLike: onTapLike,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _MiddlePanel extends StatelessWidget {
+  final Widget likeContent;
+
+  const _MiddlePanel({
+    required this.likeContent,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black26,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          likeContent,
+        ],
+      ),
+    );
+  }
+}
+
+class _LikeContent extends StatelessWidget {
+  final bool like;
+  final VoidCallback onTapLike;
+
+  const _LikeContent({
+    required this.like,
+    required this.onTapLike,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: InkWell(
+        onTap: onTapLike,
+        child: Column(
+          children: [
+            like ? Icon(Icons.check) : Icon(Icons.add),
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Text(
+              '내가 찜한 콘텐츠',
+              style: TextStyle(
+                fontSize: 11,
+                color: Colors.white60,
               ),
             ),
           ],
