@@ -97,6 +97,21 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                               ),
                             ),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              child: Text('영화 설명'),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '출연: 현빈, 손예진, 서지혜\n제작자: 이정효, 박지은',
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
