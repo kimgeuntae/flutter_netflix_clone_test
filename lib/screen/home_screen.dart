@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_clone_test/widget/box_slider.dart';
 
-import 'model/movie.dart';
-import 'widget/carousel_movie_slider.dart';
-import 'widget/circle_slider.dart';
+import '../model/movie.dart';
+import '../widget/carousel_movie_slider.dart';
+import '../widget/circle_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,7 +81,8 @@ class _TopBar extends StatelessWidget {
     );
   }
 
-  Container getTobBarContent(String title) => Container(
+  Container getTobBarContent(String title) =>
+      Container(
         padding: EdgeInsets.only(right: 1),
         child: Text(title, style: TextStyle(fontSize: 14)),
       );
