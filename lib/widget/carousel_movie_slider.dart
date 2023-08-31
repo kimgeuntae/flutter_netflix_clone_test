@@ -69,6 +69,76 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
               style: TextStyle(fontSize: 11),
             ),
           ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // 내가 찜한 콘텐츠
+                Container(
+                  child: Column(
+                    children: [
+                      likes[_currentPage]
+                          ? IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.check),
+                            )
+                          : IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.add),
+                            ),
+                      Text(
+                        '내가 찜한 콘텐츠',
+                        style: TextStyle(fontSize: 11),
+                      ),
+                    ],
+                  ),
+                ),
+                // 재생 버튼
+                Container(
+                  padding: EdgeInsets.only(right: 10),
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.play_arrow,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(3),
+                        ),
+                        Text(
+                          '재생',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                // 정보
+                Container(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.info),
+                      ),
+                      Text(
+                        '정보',
+                        style: TextStyle(
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
