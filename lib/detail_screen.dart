@@ -80,6 +80,23 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                               ),
                             ),
+                            Container(
+                              padding: EdgeInsets.all(3),
+                              child: TextButton(
+                                onPressed: () {},
+                                style: TextButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: Colors.red,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.play_arrow),
+                                    Text('재생'),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
