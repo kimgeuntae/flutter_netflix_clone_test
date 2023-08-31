@@ -131,6 +131,10 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
+  void onTapThumbUp() {
+    // 평가 페이지로 이동
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,11 +143,12 @@ class _DetailScreenState extends State<DetailScreen> {
           children: [
             makeTopPanel(),
             _MiddlePanel(
-              likeContent: _LikeContent(
+              likeButton: _LikeButton(
                 like: like,
                 onTapLike: onTapLike,
               ),
-            )
+              thumbUpButton: _ThumbUpButton(onTapThumbUp: onTapThumbUp),
+            ),
           ],
         ),
       ),
@@ -152,10 +157,12 @@ class _DetailScreenState extends State<DetailScreen> {
 }
 
 class _MiddlePanel extends StatelessWidget {
-  final Widget likeContent;
+  final Widget likeButton;
+  final Widget thumbUpButton;
 
   const _MiddlePanel({
-    required this.likeContent,
+    required this.likeButton,
+    required this.thumbUpButton,
   });
 
   @override
@@ -165,18 +172,19 @@ class _MiddlePanel extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          likeContent,
+          likeButton,
+          thumbUpButton,
         ],
       ),
     );
   }
 }
 
-class _LikeContent extends StatelessWidget {
+class _LikeButton extends StatelessWidget {
   final bool like;
   final VoidCallback onTapLike;
 
-  const _LikeContent({
+  const _LikeButton({
     required this.like,
     required this.onTapLike,
   });
@@ -195,6 +203,40 @@ class _LikeContent extends StatelessWidget {
             ),
             Text(
               '내가 찜한 콘텐츠',
+              style: TextStyle(
+                fontSize: 11,
+                color: Colors.white60,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ThumbUpButton extends StatelessWidget {
+  final VoidCallback onTapThumbUp;
+
+  const _ThumbUpButton({
+    required this.onTapThumbUp,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: InkWell(
+        onTap: onTapThumbUp,
+        child: Column(
+          children: [
+            Icon(Icons.thumb_up),
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Text(
+              '평가',
               style: TextStyle(
                 fontSize: 11,
                 color: Colors.white60,
