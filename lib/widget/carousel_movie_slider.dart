@@ -57,6 +57,7 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
             },
           ),
           */
+          // 포스터 슬라이더
           CarouselSlider(
             items: images,
             options: CarouselOptions(
@@ -91,38 +92,11 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
               ],
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: getPosterIndicator(likes, _currentPage),
-            ),
-          ),
+          _PostIndexIndicator(likes: likes, currentPageindex: _currentPage),
         ],
       ),
     );
   }
-}
-
-List<Widget> getPosterIndicator(List list, int pageIndex) {
-  List<Widget> results = [];
-
-  for (int i = 0; i < list.length; i++) {
-    results.add(
-      Container(
-        width: 8,
-        height: 8,
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: pageIndex == i
-              ? Color.fromRGBO(255, 255, 255, 0.9)
-              : Color.fromRGBO(255, 255, 255, 0.4),
-        ),
-      ),
-    );
-  }
-
-  return results;
 }
 
 class _LikesContents extends StatelessWidget {
@@ -206,6 +180,47 @@ class _Info extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PostIndexIndicator extends StatelessWidget {
+  final List<bool> likes;
+  final int currentPageindex;
+
+  const _PostIndexIndicator({
+    required this.likes,
+    required this.currentPageindex,
+    super.key,
+  });
+
+  List<Widget> getPosterIndicator(List list, int pageIndex) {
+    List<Widget> results = [];
+
+    for (int i = 0; i < list.length; i++) {
+      results.add(
+        Container(
+          width: 8,
+          height: 8,
+          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: pageIndex == i
+                ? Color.fromRGBO(255, 255, 255, 0.9)
+                : Color.fromRGBO(255, 255, 255, 0.4),
+          ),
+        ),
+      );
+    }
+
+    return results;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: getPosterIndicator(likes, currentPageindex),
     );
   }
 }
