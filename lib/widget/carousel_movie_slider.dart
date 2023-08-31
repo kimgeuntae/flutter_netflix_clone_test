@@ -205,9 +205,7 @@ class _PostIndexIndicator extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: pageIndex == i
-                ? Color.fromRGBO(255, 255, 255, 0.9)
-                : Color.fromRGBO(255, 255, 255, 0.4),
+            color: pageIndex == i ? Colors.white : Colors.grey,
           ),
         ),
       );
