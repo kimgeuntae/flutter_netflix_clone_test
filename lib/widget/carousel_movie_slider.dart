@@ -85,48 +85,9 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
                   onPressed: likeButtonPressed,
                 ),
                 // 재생 버튼
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(3),
-                        ),
-                        Text(
-                          '재생',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                _PlayButton(),
                 // 정보
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.info),
-                      ),
-                      Text(
-                        '정보',
-                        style: TextStyle(
-                          fontSize: 11,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _Info(),
               ],
             ),
           )
@@ -160,6 +121,63 @@ class _LikesContents extends StatelessWidget {
           style: TextStyle(fontSize: 11),
         ),
       ],
+    );
+  }
+}
+
+class _PlayButton extends StatelessWidget {
+  const _PlayButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(right: 10),
+      child: TextButton(
+        onPressed: () {},
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.white,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.play_arrow,
+              color: Colors.black,
+            ),
+            Padding(
+              padding: EdgeInsets.all(3),
+            ),
+            Text(
+              '재생',
+              style: TextStyle(color: Colors.black),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Info extends StatelessWidget {
+  const _Info({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(right: 10),
+      child: Column(
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.info),
+          ),
+          Text(
+            '정보',
+            style: TextStyle(
+              fontSize: 11,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
