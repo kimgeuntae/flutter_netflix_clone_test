@@ -48,7 +48,7 @@ class CircleSlider extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: makeCircleImages(movies),
             ),
-          )
+          ),
         ],
       ),
     );
