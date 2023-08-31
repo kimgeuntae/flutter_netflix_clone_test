@@ -188,24 +188,19 @@ class _MiddlePanel extends StatelessWidget {
   }
 }
 
-class _LikeButton extends StatelessWidget {
-  final bool like;
-  final VoidCallback onTapLike;
-
-  const _LikeButton({
-    required this.like,
-    required this.onTapLike,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+// TODO: 이거로 만들면 같은 코드인데 버튼 크기가 달라짐. 이유가 뭘까..
+Widget _makeMiddlePanelButton({
+  required VoidCallback onTap,
+  required Icon icon,
+  required String text,
+}) =>
+    Container(
       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
       child: InkWell(
-        onTap: onTapLike,
+        onTap: onTap,
         child: Column(
           children: [
-            like ? Icon(Icons.check) : Icon(Icons.add),
+            icon,
             Padding(
               padding: EdgeInsets.all(5),
             ),
@@ -220,6 +215,23 @@ class _LikeButton extends StatelessWidget {
         ),
       ),
     );
+
+class _LikeButton extends StatelessWidget {
+  final bool like;
+  final VoidCallback onTapLike;
+
+  const _LikeButton({
+    required this.like,
+    required this.onTapLike,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _makeMiddlePanelButton(
+      onTap: onTapLike,
+      icon: like ? Icon(Icons.check) : Icon(Icons.add),
+      text: '내가 찜한 콘텐츠',
+    );
   }
 }
 
@@ -233,26 +245,10 @@ class _ThumbUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-      child: InkWell(
-        onTap: onTapThumbUp,
-        child: Column(
-          children: [
-            Icon(Icons.thumb_up),
-            Padding(
-              padding: EdgeInsets.all(5),
-            ),
-            Text(
-              '평가',
-              style: TextStyle(
-                fontSize: 11,
-                color: Colors.white60,
-              ),
-            ),
-          ],
-        ),
-      ),
+    return _makeMiddlePanelButton(
+      onTap: onTapThumbUp,
+      icon: Icon(Icons.thumb_up),
+      text: '평가',
     );
   }
 }
@@ -267,26 +263,10 @@ class _SendButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-      child: InkWell(
-        onTap: onTapSend,
-        child: Column(
-          children: [
-            Icon(Icons.send),
-            Padding(
-              padding: EdgeInsets.all(5),
-            ),
-            Text(
-              '공유',
-              style: TextStyle(
-                fontSize: 11,
-                color: Colors.white60,
-              ),
-            )
-          ],
-        ),
-      ),
+    return _makeMiddlePanelButton(
+      onTap: onTapSend,
+      icon: Icon(Icons.send),
+      text: '공유',
     );
   }
 }
