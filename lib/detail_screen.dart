@@ -44,7 +44,30 @@ class _DetailScreenState extends State<DetailScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-              )
+                // 이미지 뒷 배경 불투명
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Colors.black.withOpacity(0.1),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 45, 0, 10),
+                              child: Image.asset(
+                                'images/${widget.movie.poster}',
+                                height: 300,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           makeMenuButton(),
