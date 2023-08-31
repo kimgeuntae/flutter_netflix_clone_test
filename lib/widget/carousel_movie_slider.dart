@@ -63,7 +63,11 @@ class _CarouselMovieSliderState extends State<CarouselMovieSlider> {
             ),
           ),
           Container(
-            child: Text(_currentKeyword),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 3),
+            child: Text(
+              _currentKeyword,
+              style: TextStyle(fontSize: 11),
+            ),
           ),
         ],
       ),
